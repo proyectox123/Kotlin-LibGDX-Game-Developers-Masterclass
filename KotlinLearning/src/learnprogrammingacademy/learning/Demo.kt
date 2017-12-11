@@ -2,32 +2,44 @@ package learnprogrammingacademy.learning
 
 var lives = 3
 var score = 0
-var coinCount = 90
-
-val itemCount = 24
-val itemsPerPage = 5
+var coinCount = 110
+var gameOver = false
 
 fun main(args: Array<String>) {
-    println("Score= $score")
-
     score += 10
-    println("Score= $score lives= $lives")
+    coinCount = 110 //Re-initializing
+    //lives = 0
 
-    lives--
-    println("Score= $score lives= $lives")
+    if(lives == 0){
+        gameOver = true
+    }
 
-    score *= 2
-    println("Score= $score lives= $lives")
+    printMedal()
 
-    score /= 2
-    println("Score= $score lives= $lives")
+    if(gameOver){
+       println("score= $score")
+    }else{
+        println("lives= $lives")
+    }
 
-    coinCount += 40
-    println("Coin count= $coinCount")
+    if(!gameOver){
+        println("Game is not over")
+    }
 
-    coinCount %= 100
-    println("Coin count= $coinCount")
-
-    val remainingItems = itemCount % itemsPerPage
-    println("Remaining items= $remainingItems")
+    val max = getMax(5, 8)
+    println("Max= $max")
 }
+
+private fun printMedal(){
+    if(coinCount > 100){
+        println("Gold medal!")
+    } else if(coinCount > 80){
+        println("Silver medal!")
+    } else if(coinCount > 70){
+        println("Bronze medal!")
+    } else {
+        println("No medal...")
+    }
+}
+
+private fun getMax(a: Int, b: Int) = if(a > b) a else b
