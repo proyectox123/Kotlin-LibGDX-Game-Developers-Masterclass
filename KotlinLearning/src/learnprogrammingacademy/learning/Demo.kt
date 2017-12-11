@@ -1,34 +1,23 @@
 package learnprogrammingacademy.learning
 
 fun main(args: Array<String>) {
-    println("IsTrue= ${isTrue(4, 10)}")
+    var result = subtract(5, 1)
+    println("Subtract(5, 1)= $result")
 
-    var number = getInt()
-    println("Number= $number")
+    result = subtract(5, 2,1)
+    println("Subtract(5, 2, 1)= $result")
 
-    number = increment(number)
-    println("Number= $number")
+    result = mul(2, 4)
+    println("Mul(2, 4)= $result")
 
-    number = sum(number, 3)
-    println("Number= $number")
-
-    printSum(4, 5)
+    val floatResult = mul(2.5f, 3.5f)
+    println("Mul(2.5f, 3.5f)= $floatResult")
 }
 
-//private fun getInt() : Int{
-//    return 10
-//}
+private fun subtract(a: Int, b: Int) = a - b
 
-private fun getInt() = 10
+private fun subtract(a: Int, b: Int, c: Int) = a - b - c
 
-//private fun isTrue() : Boolean {
-//    return 4 < 10
-//}
+private fun mul(a: Int, b: Int) = a* b
 
-private fun isTrue(a: Int, b: Int) = a < b
-
-private fun increment(number: Int) = number + 1
-
-private fun sum(a: Int, b: Int) = a + b
-
-private fun printSum(a: Int, b: Int) = println("$a + $b = ${a+b}")
+private fun mul(a: Float, b: Float) = a* b
