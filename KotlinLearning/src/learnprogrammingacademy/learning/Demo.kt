@@ -12,11 +12,15 @@ fun main(args: Array<String>) {
     val a = 1
     val b = 2
     val c = 3
-    val d = 4
 
-    println("Sum(a, b)= ${sum(a, b)}")
-    println("Sum(a, b, c)= ${sum(a, b, c)}")
-    println("Sum(a, b, c, d)= ${sum(a, b, c, d)}")
+    var sum = sum(a, b)
+    println("Sum(a, b)= $sum")
+
+    sum = sum(a, b, sum)
+    println("Sum(a, b, c)= $sum")
+
+    sum = sum(a, b, c, sum)
+    println("Sum(a, b, c, d)= $sum}")
 }
 
 private fun sum(a: Int, b: Int) = a + b
