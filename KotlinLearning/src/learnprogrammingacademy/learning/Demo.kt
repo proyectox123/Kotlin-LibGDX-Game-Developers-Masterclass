@@ -1,19 +1,33 @@
 package learnprogrammingacademy.learning
 
+var person : String? = null
+var lives = 0
+
+var pet :String? = null
+
 fun main(args: Array<String>) {
-    /*
-    Create array of strings that represents names of people
-    Print all string names that start with capital letter T in uppercase
-    Find method in String class that checks if staring startsWith another string
-     */
+    //person.toUpperCase() // Compilation error
+    //person!!.toUpperCase() // Null pointer exception in case person is null
+    person = person?.toUpperCase()
+    println("Person= $person")
 
-    //val names = arrayOf("Tania", "Ximena", "Tadeo", "Víctor", "Marcos")
-    val names = arrayOf("John", "Tom", "Anthony", "Jimmy", "Timmy")
-    printNames(names)
-}
+    person = "John"
+    person = person?.toUpperCase()
+    println("Person= $person")
 
-private fun printNames(names: Array<String>) {
-    names.asSequence()
-            .filter { it.startsWith("T") }
-            .forEach { println("Name= ${it.toUpperCase()}") }
+    println("Lives= ${lives == 0}")
+
+    var anotherPerson : String? = null
+    println("Another person= $anotherPerson")
+    println("Another person null= ${anotherPerson === null}")
+    println("Another person isEmpty= ${anotherPerson.isNullOrEmpty()}")
+
+    anotherPerson = ""
+    println("Another person= $anotherPerson")
+    println("Another person null= ${anotherPerson === null}")
+    println("Another person isEmpty= ${anotherPerson.isNullOrEmpty()}")
+
+    println("Pet is null= ${pet === null}")
+    val dog = pet?.toUpperCase()
+    println("Dog= ${dog?.startsWith("b")}")
 }
