@@ -1,26 +1,25 @@
 package learnprogrammingacademy.learning
 
-var lives = 3
-var coinCount = 90
+var names = IntArray(4)
+var pets = arrayOf("Parrot", "Cat", "Dog")
+var table = Array(3){
+    IntArray(3)
+}
+var myArray = arrayOf(
+        arrayOf("One", "Two"),
+        arrayOf("Three", "Four", "Five")
+)
 
 fun main(args: Array<String>) {
-    whileFunction()
-    lives = 3
-    doWhileFunction()
-}
+    println("Pets size= ${pets.size}")
+    println("Pets[0]= ${pets[0]}")
+    println("Pets[1]= ${pets[1]}")
+    println("Pets[2]= ${pets[2]}")
 
-private fun whileFunction(){
-    while (lives > 0) {
-        println("lives= $lives")
-        lives--
-    }
-}
+    table[0][0] = 10
+    table[1][1] = 20
 
-private fun doWhileFunction(){
-    do {
-        coinCount += 20
-        lives--
-    }while (lives > 0)
-
-    println("coins= $coinCount lives= $lives")
+    println("Table[0][0]= ${table[0][0]}")
+    println("Table[1][1]= ${table[1][1]}")
+    println("Table[2][2]= ${table[2][2]}")
 }
