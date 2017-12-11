@@ -1,25 +1,33 @@
 package learnprogrammingacademy.learning
 
 var lives = 3
-var playerName = "John"
-var gameOver = false
+var score = 0
+var coinCount = 90
 
-val levelCount = 4
+val itemCount = 24
+val itemsPerPage = 5
 
 fun main(args: Array<String>) {
-    printLivesLeft()
+    println("Score= $score")
 
-    lives += 2
-    playerName += " " + "Smith"
+    score += 10
+    println("Score= $score lives= $lives")
 
-    printLivesLeft()
-    println("gameOver = $gameOver")
+    lives--
+    println("Score= $score lives= $lives")
 
-    println("PlayerName $playerName needs to comple $levelCount leels")
-    gameOver = true
-    println("gameOver = $gameOver")
-}
+    score *= 2
+    println("Score= $score lives= $lives")
 
-private fun printLivesLeft(){
-    println("Player $playerName has $lives lives left")
+    score /= 2
+    println("Score= $score lives= $lives")
+
+    coinCount += 40
+    println("Coin count= $coinCount")
+
+    coinCount %= 100
+    println("Coin count= $coinCount")
+
+    val remainingItems = itemCount % itemsPerPage
+    println("Remaining items= $remainingItems")
 }
