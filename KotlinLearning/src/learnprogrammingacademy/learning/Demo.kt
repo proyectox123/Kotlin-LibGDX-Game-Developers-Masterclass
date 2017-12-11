@@ -1,25 +1,33 @@
 package learnprogrammingacademy.learning
 
-var names = IntArray(4)
 var pets = arrayOf("Parrot", "Cat", "Dog")
-var table = Array(3){
-    IntArray(3)
-}
-var myArray = arrayOf(
-        arrayOf("One", "Two"),
-        arrayOf("Three", "Four", "Five")
+var table = arrayOf(
+        intArrayOf(1, 2, 3),
+        intArrayOf(4, 5, 6),
+        intArrayOf(7, 8, 9)
 )
 
 fun main(args: Array<String>) {
-    println("Pets size= ${pets.size}")
-    println("Pets[0]= ${pets[0]}")
-    println("Pets[1]= ${pets[1]}")
-    println("Pets[2]= ${pets[2]}")
+    for (index in pets.indices){
+        println("pets[$index]= ${pets[index]}")
+    }
 
-    table[0][0] = 10
-    table[1][1] = 20
+    for(pet in pets){
+        println("pet= $pet")
+    }
 
-    println("Table[0][0]= ${table[0][0]}")
-    println("Table[1][1]= ${table[1][1]}")
-    println("Table[2][2]= ${table[2][2]}")
+    for(value in 1..10 step 2){
+        println("value= $value")
+    }
+
+    for((index, value) in pets.withIndex()){
+        println("Element at index= $index = $value")
+    }
+
+    for(row in 0 until table.size){
+        println("Row= ${table[row]}")
+        for(column in 0 until table[row].size){
+            println("Number= ${table[row][column]}")
+        }
+    }
 }
