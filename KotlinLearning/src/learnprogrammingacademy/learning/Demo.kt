@@ -1,33 +1,34 @@
 package learnprogrammingacademy.learning
 
-var person : String? = null
-var lives = 0
-
-var pet :String? = null
-
 fun main(args: Array<String>) {
-    //person.toUpperCase() // Compilation error
-    //person!!.toUpperCase() // Null pointer exception in case person is null
-    person = person?.toUpperCase()
-    println("Person= $person")
+    println("IsTrue= ${isTrue(4, 10)}")
 
-    person = "John"
-    person = person?.toUpperCase()
-    println("Person= $person")
+    var number = getInt()
+    println("Number= $number")
 
-    println("Lives= ${lives == 0}")
+    number = increment(number)
+    println("Number= $number")
 
-    var anotherPerson : String? = null
-    println("Another person= $anotherPerson")
-    println("Another person null= ${anotherPerson === null}")
-    println("Another person isEmpty= ${anotherPerson.isNullOrEmpty()}")
+    number = sum(number, 3)
+    println("Number= $number")
 
-    anotherPerson = ""
-    println("Another person= $anotherPerson")
-    println("Another person null= ${anotherPerson === null}")
-    println("Another person isEmpty= ${anotherPerson.isNullOrEmpty()}")
-
-    println("Pet is null= ${pet === null}")
-    val dog = pet?.toUpperCase()
-    println("Dog= ${dog?.startsWith("b")}")
+    printSum(4, 5)
 }
+
+//private fun getInt() : Int{
+//    return 10
+//}
+
+private fun getInt() = 10
+
+//private fun isTrue() : Boolean {
+//    return 4 < 10
+//}
+
+private fun isTrue(a: Int, b: Int) = a < b
+
+private fun increment(number: Int) = number + 1
+
+private fun sum(a: Int, b: Int) = a + b
+
+private fun printSum(a: Int, b: Int) = println("$a + $b = ${a+b}")
