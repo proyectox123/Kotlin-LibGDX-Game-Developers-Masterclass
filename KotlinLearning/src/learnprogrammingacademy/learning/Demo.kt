@@ -1,33 +1,50 @@
 package learnprogrammingacademy.learning
 
-var pets = arrayOf("Parrot", "Cat", "Dog")
-var table = arrayOf(
-        intArrayOf(1, 2, 3),
-        intArrayOf(4, 5, 6),
-        intArrayOf(7, 8, 9)
-)
-
 fun main(args: Array<String>) {
-    for (index in pets.indices){
-        println("pets[$index]= ${pets[index]}")
+    /*
+    Use any loop from previous videos (for, while, do-while)
+    sum all number from 1-100
+    print sum to console
+     */
+    printWithFor()
+    printWithSum()
+    printWithWhile()
+    printWithDoWhile()
+}
+
+@Suppress("LoopToCallChain")
+private fun printWithFor(){
+    var sum = 0
+    for(i in 1..100){
+        sum += i
     }
 
-    for(pet in pets){
-        println("pet= $pet")
+    println("printWithFor sum= $sum")
+}
+
+private fun printWithSum(){
+    val sum = (1..100).sum()
+    println("printWithSum sum= $sum")
+}
+
+private fun printWithWhile(){
+    var sum = 0
+    var index = 100
+    while (index > 0){
+        sum += index
+        index--
     }
 
-    for(value in 1..10 step 2){
-        println("value= $value")
-    }
+    println("printWithWhile sum= $sum")
+}
 
-    for((index, value) in pets.withIndex()){
-        println("Element at index= $index = $value")
-    }
+private fun printWithDoWhile(){
+    var sum = 0
+    var index = 1
+    do{
+        sum += index
+        index++
+    }while (index <= 100)
 
-    for(row in 0 until table.size){
-        println("Row= ${table[row]}")
-        for(column in 0 until table[row].size){
-            println("Number= ${table[row][column]}")
-        }
-    }
+    println("printWithDoWhile sum= $sum")
 }
