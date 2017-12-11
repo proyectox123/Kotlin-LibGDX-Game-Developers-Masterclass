@@ -1,23 +1,24 @@
 package learnprogrammingacademy.learning
 
 fun main(args: Array<String>) {
-    var result = subtract(5, 1)
-    println("Subtract(5, 1)= $result")
+    /*
+    Write 3 methods with name sum
+    First method needs to sum 2 numbers
+    First method needs to sum 3 numbers
+    First method needs to sum 4 numbers
+    Call all 3 methods and print result to console
+    All parameters and return types can be int
+     */
+    val a = 1
+    val b = 2
+    val c = 3
+    val d = 4
 
-    result = subtract(5, 2,1)
-    println("Subtract(5, 2, 1)= $result")
-
-    result = mul(2, 4)
-    println("Mul(2, 4)= $result")
-
-    val floatResult = mul(2.5f, 3.5f)
-    println("Mul(2.5f, 3.5f)= $floatResult")
+    println("Sum(a, b)= ${sum(a, b)}")
+    println("Sum(a, b, c)= ${sum(a, b, c)}")
+    println("Sum(a, b, c, d)= ${sum(a, b, c, d)}")
 }
 
-private fun subtract(a: Int, b: Int) = a - b
-
-private fun subtract(a: Int, b: Int, c: Int) = a - b - c
-
-private fun mul(a: Int, b: Int) = a* b
-
-private fun mul(a: Float, b: Float) = a* b
+private fun sum(a: Int, b: Int) = a + b
+private fun sum(a: Int, b: Int, c: Int) = a + b + c
+private fun sum(a: Int, b: Int, c: Int, d:Int) = a + b + c + d
