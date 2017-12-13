@@ -1,27 +1,36 @@
 package learnprogrammingacademy.learning
 
+/*
+Write extension method that will return true if string has even number of characters or false if string has odd number of characters
+Test method in main with few different strings
+Write method in StringUtils that will calculate sum of two strings lengths, or in other words sum of characters in 2 strings
+Tip: Use modulus operator for even odd testing
+Tip: Be careful with null values and empty strings
+ */
+
+fun String?.hasEvenNumberOfCharacters() = this != null && this.length % 2 == 0
+
 object StringUtils {
-    fun startsWithUpperCase(value: String?) : Boolean = !(value.isNullOrEmpty()) && value!![0].isUpperCase()
+    fun sumStringsLengths(param1: String?, param2: String?) = getStringLength(param1) + getStringLength(param2)
+
+    private fun getStringLength(param: String?) = if(param.isNullOrBlank()){
+        0
+    }else{
+        param!!.length
+    }
 }
 
-fun String?.startsWithUpperCase() : Boolean = !(this.isNullOrEmpty()) && this!![0].isUpperCase()
-
-infix fun Int.multiplyBy(multiplier: Int) = this * multiplier
-
 fun main(args: Array<String>) {
-    val myString = "Kotlin"
+    println("hasEvenNumberOfCharacters= ${null.hasEvenNumberOfCharacters()}")
+    println("hasEvenNumberOfCharacters= ${"".hasEvenNumberOfCharacters()}")
+    println("hasEvenNumberOfCharacters= ${"Kotlin".hasEvenNumberOfCharacters()}")
+    println("hasEvenNumberOfCharacters= ${"Kotlin1".hasEvenNumberOfCharacters()}")
 
-    println("toLower=  ${myString.toLowerCase()}")
-    println("startsWithUpperCase= ${StringUtils.startsWithUpperCase(myString)}")
-    println("startsWithUpperCase= ${StringUtils.startsWithUpperCase(null)}")
-    println("startsWithUpperCase= ${StringUtils.startsWithUpperCase("")}")
-    println("startsWithUpperCase= ${StringUtils.startsWithUpperCase(myString.toLowerCase())}")
-
-    println("startsWithUpperCase ext= ${myString.startsWithUpperCase()}")
-    println("startsWithUpperCase ext= ${null.startsWithUpperCase()}")
-    println("startsWithUpperCase ext= ${"".startsWithUpperCase()}")
-    println("startsWithUpperCase ext= ${myString.toLowerCase().startsWithUpperCase()}")
-
-    println("1*5 ext= ${1.multiplyBy(5)}")
-    println("1*5 ext= ${1 multiplyBy 5}")
+    println("sumStringsLengths= ${StringUtils.sumStringsLengths(null, null)}")
+    println("sumStringsLengths= ${StringUtils.sumStringsLengths(null, "")}")
+    println("sumStringsLengths= ${StringUtils.sumStringsLengths(null, "World!")}")
+    println("sumStringsLengths= ${StringUtils.sumStringsLengths("", null)}")
+    println("sumStringsLengths= ${StringUtils.sumStringsLengths("", "World!")}")
+    println("sumStringsLengths= ${StringUtils.sumStringsLengths("Hello", null)}")
+    println("sumStringsLengths= ${StringUtils.sumStringsLengths("Hello", "World!")}")
 }
