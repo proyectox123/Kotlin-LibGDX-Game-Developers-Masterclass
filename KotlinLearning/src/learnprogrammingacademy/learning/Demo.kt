@@ -1,17 +1,47 @@
 package learnprogrammingacademy.learning
 
-fun main(args: Array<String>) {
-    showInfo()
-    showInfo("Jimmy")
-    showInfo("Anthony", 10)
-    showInfo(level = 5, name = "Timmy")
-    showInfo(level = 15)
+class Dog constructor(private val color: String = "black") {
 
-    showLevelAndXp(5, 1000)
-    showLevelAndXp(xp = 10, level = 3)
-    showLevelAndXp(level = 10, xp = 5000)
+    init {
+        println("Dog initialized with color value= $color")
+    }
+
+    fun printColor() = println("color= $color")
 }
 
-private fun showInfo(name: String = "John", level: Int = 2) = println("name= $name level= $level")
+class Cat(private val name: String = "Tom", private val age: Int = 5){
+//    private var age = 3
 
-private fun showLevelAndXp(level: Int, xp: Int) = println("level= $level xp= $xp")
+//    constructor(name: String = "Tom", age: Int = 5) : this(name){
+//        this.age = age
+//    }
+
+    fun printInfo() = println("name= $name age= $age")
+}
+
+fun main(args: Array<String>) {
+    callDog()
+    callCat()
+}
+
+private fun callDog(){
+    val dog = Dog()
+    dog.printColor()
+
+    val dog2 = Dog("gray")
+    dog2.printColor()
+
+    println(dog == dog2)
+    println(dog === dog2)
+}
+
+private fun callCat(){
+    val cat = Cat()
+    cat.printInfo()
+
+    val cat2 = Cat(name = "Jerry")
+    cat2.printInfo()
+
+    val cat3 = Cat(name = "Jimmy", age = 10)
+    cat3.printInfo()
+}
