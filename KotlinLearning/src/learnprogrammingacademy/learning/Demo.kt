@@ -1,7 +1,20 @@
 package learnprogrammingacademy.learning
 
+/*
+Create interface Shooter with method reload
+Implement it that interface on classes Pistolero and Archer
+Pistolero already has reload method
+Archer doesn't have reload method (Implement it)
+When archer releads print message archer reloading
+Run and check console to see if archer is reloading
+ */
+
 interface Healable {
     fun heal(amount: Int)
+}
+
+interface Shooter {
+    fun reload()
 }
 
 abstract class Enemy(health: Int, var weapon: String){
@@ -45,15 +58,27 @@ class Pikeman(health: Int, var armor: Int) : Enemy(health, "pike"){
     }
 }
 
-class Archer(health: Int, var arrowCount: Int) : Enemy(health, "bow"){
+class Archer(health: Int, arrowCount: Int) : Enemy(health, "bow"), Shooter{
+
+    var arrowCount: Int = 5
+        private set(value) {
+            field = if (field > 5){
+                5
+            }else if (field < 0){
+                0
+            }else{
+                value
+            }
+        }
+
     init {
         println("Archer init called")
     }
 
     override fun attack(enemy: Enemy) {
         if (arrowCount <= 0) {
-            //println("No more arrows")
-            return
+            println("No more arrows")
+            reload()
         }
 
         super.attack(enemy)
@@ -64,9 +89,14 @@ class Archer(health: Int, var arrowCount: Int) : Enemy(health, "bow"){
     override fun run() {
         println("Archer running...")
     }
+
+    override fun reload(){
+        println("Reloading bow...")
+        arrowCount = 5
+    }
 }
 
-class Pistolero(health: Int) : Enemy(health, "pistol"), Healable{
+class Pistolero(health: Int) : Enemy(health, "pistol"), Healable, Shooter{
 
     var bulletCount: Int = 6
         private set(value) {
@@ -87,7 +117,6 @@ class Pistolero(health: Int) : Enemy(health, "pistol"), Healable{
         if (bulletCount <= 0) {
             println("No more bullets!")
             reload()
-            return
         }
 
         super.attack(enemy)
@@ -109,13 +138,19 @@ class Pistolero(health: Int) : Enemy(health, "pistol"), Healable{
         health += amount
     }
 
-    private fun reload(){
+    override fun reload(){
         println("Reloading pistol...")
         bulletCount = 6
     }
 }
 
 fun main(args: Array<String>) {
+    //example()
+    //pistoleroVsPikeman()
+    pistoleroVsArcher()
+}
+
+private fun example(){
     val pikeman : Enemy = Pikeman(100, 100)
     pikeman.damage = 5
     pikeman.run()
@@ -145,9 +180,6 @@ fun main(args: Array<String>) {
         pistolero.heal(200)
         println("pistolero health= ${pistolero.health}")
     }
-
-    //pistoleroVsPikeman()
-    //pistoleroVsArcher()
 }
 
 private fun pistoleroVsPikeman(){
