@@ -1,13 +1,11 @@
 package learnprogrammingacademy.learning
 
-/*
-Create interface Shooter with method reload
-Implement it that interface on classes Pistolero and Archer
-Pistolero already has reload method
-Archer doesn't have reload method (Implement it)
-When archer releads print message archer reloading
-Run and check console to see if archer is reloading
- */
+enum class EnemyClassType{
+    LIGHT, HEAVY;
+
+    fun isLight() = this == LIGHT
+    fun isHeavy() = this == HEAVY
+}
 
 interface Healable {
     fun heal(amount: Int)
@@ -30,15 +28,44 @@ abstract class Enemy(health: Int, var weapon: String){
             }
         }
     var damage: Int = 0
+    var type = EnemyClassType.LIGHT
 
     init {
         this.health = health
         println("Enemy init called")
     }
 
+    fun isLight() = type.isLight()
+    fun isHeavy() = type.isHeavy()
+
     open fun attack(enemy: Enemy){
+        val percentage = (damage * 0.1).toInt()
+        val damageToTake = if(isLight() && type.isHeavy()){ //light vs heavy
+            damage - percentage
+        } else if(isHeavy() && type.isLight()){ //heavy vs light
+            damage + percentage
+        }else{
+            damage
+        }
+
+//        val damageToTake = if(type.isLight() && enemy.type.isHeavy()){ //light vs heavy
+//            damage - percentage
+//        } else if(type.isHeavy() && enemy.type.isLight()){ //heavy vs light
+//            damage + percentage
+//        }else{
+//            damage
+//        }
+
+//        val damageToTake = if(type == EnemyClassType.LIGHT && enemy.type == EnemyClassType.HEAVY){ //light vs heavy
+//            damage - percentage
+//        } else if(type == EnemyClassType.HEAVY&& enemy.type == EnemyClassType.LIGHT){ //heavy vs light
+//            damage + percentage
+//        }else{
+//            damage
+//        }
+
         println("Attacking ${enemy::class.simpleName} with $weapon")
-        enemy.takeDamage(damage)
+        enemy.takeDamage(damageToTake)
     }
 
     private fun takeDamage(damageToTake: Int){
@@ -50,6 +77,7 @@ abstract class Enemy(health: Int, var weapon: String){
 
 class Pikeman(health: Int, var armor: Int) : Enemy(health, "pike"){
     init {
+        type = EnemyClassType.HEAVY
         println("Pikeman init called")
     }
 
@@ -145,76 +173,35 @@ class Pistolero(health: Int) : Enemy(health, "pistol"), Healable, Shooter{
 }
 
 fun main(args: Array<String>) {
-    //example()
-    //pistoleroVsPikeman()
-    pistoleroVsArcher()
-}
-
-private fun example(){
     val pikeman : Enemy = Pikeman(100, 100)
-    pikeman.damage = 5
+    pikeman.damage = 15
     pikeman.run()
 
     val archer : Enemy = Archer(100, 5)
-    archer.damage = 5
+    archer.damage = 10
     archer.run()
 
     val pistolero : Enemy = Pistolero(100)
-    pistolero.damage = 10
+    pistolero.damage = 20
     pistolero.run()
 
-    while (archer.health > 0){
-        pistolero.attack(archer)
-        archer.attack(pistolero)
-    }
+    println("pikeman type=${pikeman.type}")
+    println("archer type=${archer.type}")
+    println("pistolero type=${pistolero.type}")
 
-    println("archer died")
-    println("pistolero health= ${pistolero.health}")
-    if(pistolero is Healable){
-        pistolero.heal(10)
-        println("pistolero health= ${pistolero.health}")
+    println("pikeman heavy=${pikeman.isHeavy()} light=${pikeman.isLight()}")
+    println("archer heavy=${archer.isHeavy()} light=${archer.isLight()}")
+    println("pistolero heavy=${pistolero.isHeavy()} light=${pistolero.isLight()}")
 
-        pistolero.heal(-10)
-        println("pistolero health= ${pistolero.health}")
+    pikeman.attack(archer)
+    archer.attack(pikeman)
+    println("pikeman health= ${pikeman.health} archer health= ${archer.health}")
 
-        pistolero.heal(200)
-        println("pistolero health= ${pistolero.health}")
-    }
-}
+    pikeman.attack(pistolero)
+    pistolero.attack(pikeman)
+    println("pikeman health= ${pikeman.health} pistolero health= ${pistolero.health}")
 
-private fun pistoleroVsPikeman(){
-    println("******************************** pistoleroVsPikeman ********************************")
-    val pikeman : Enemy = Pikeman(100, 100)
-    pikeman.damage = 5
-    pikeman.run()
-    val pistolero : Enemy = Pistolero(100)
-    pistolero.damage = 10
-
-    battle(pikeman, pistolero)
-}
-
-private fun pistoleroVsArcher(){
-    println("******************************** pistoleroVsArcher ********************************")
-    val archer : Enemy = Archer(100, 5)
-    archer.damage = 5
-    val pistolero : Enemy = Pistolero(100)
-    pistolero.damage = 10
-
-    battle(archer, pistolero)
-}
-
-private fun battle(enemy1: Enemy, enemy2: Enemy){
-    val enemy1Name = enemy1::class.simpleName
-    val enemy2Name = enemy2::class.simpleName
-
-    while (enemy1.health > 0 && enemy2.health > 0){
-        enemy1.attack(enemy2)
-        println("$enemy1Name health= ${enemy1.health} $enemy2Name health= ${enemy2.health}")
-        if(enemy2.health > 0){
-            enemy2.attack(enemy1)
-            println("$enemy2Name health= ${enemy2.health} $enemy1Name health= ${enemy1.health}")
-        }
-    }
-
-    println("${if(enemy1.health > 0) enemy1Name else enemy2Name} is the winner!")
+    archer.attack(pistolero)
+    pistolero.attack(archer)
+    println("archer health= ${archer.health} pistolero health= ${pistolero.health}")
 }
