@@ -1,43 +1,42 @@
 package learnprogrammingacademy.learning
 
-class Player {
-    private var health = 150
-        set(value){
-            println("setter block")
-            var newHealth = value
-            if(value <= 0){
-                newHealth = 0
+class Ship {
+    private val bullets = arrayOf("laser", "fire")
+
+    var hitPoints = 100
+        private set
+
+    fun fire(){
+        val bullet = if(hitPoints > 50){
+            bullets[1]
+        }else{
+            bullets[0]
+        }
+
+        println("Firing $bullet")
+    }
+
+    fun takeDamage(amount: Int){
+        if(amount > 0){
+            hitPoints -= amount
+            if(hitPoints < 0){
+                hitPoints = 0
             }
-
-            field = newHealth
-        }
-
-    val alive
-        get() = health > 0
-
-    fun reduceHealth(amount: Int){
-        health -= amount
-    }
-
-    fun respawn(){
-        if(!alive){
-            health = 150
         }
     }
-
-    fun printInfo() = println("health= $health alive= $alive")
 }
 
 fun main(args: Array<String>) {
-    val player = Player()
-    println("player alive= ${player.alive}")
+    val ship = Ship()
+    ship.fire()
+    ship.takeDamage(10)
+    println("ship hitPoints= ${ship.hitPoints}")
 
-    player.reduceHealth(100)
-    player.printInfo()
+    ship.fire()
+    ship.takeDamage(50)
+    println("ship hitPoints= ${ship.hitPoints}")
 
-    player.reduceHealth(100)
-    player.printInfo()
-
-    player.respawn()
-    player.printInfo()
+    ship.fire()
+    ship.takeDamage(100)
+    println("ship hitPoints= ${ship.hitPoints}")
 }
