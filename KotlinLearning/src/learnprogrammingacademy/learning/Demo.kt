@@ -177,6 +177,11 @@ class Pistolero(health: Int) : Soldier(health, "pistol"), Healable, Shooter{
 }
 
 fun main(args: Array<String>) {
+    val names = listOf("Jimmy", "Anthony", "John")
+    for(name in names){
+        println("name= $name uppercase= ${name.toUpperCase()}")
+    }
+
     val pikeman : Soldier = Pikeman(100, 100)
     pikeman.damage = 15
     pikeman.run()
@@ -186,26 +191,17 @@ fun main(args: Array<String>) {
     archer.run()
 
     val pistolero : Soldier = Pistolero(100)
-    archer.damage = 20
+    pistolero.damage = 20
     pistolero.run()
 
-    println("pikeman type=${pikeman.type}")
-    println("archer type=${archer.type}")
-    println("pistolero type=${pistolero.type}")
+    //val army : List<Soldier> = listOf<Soldier>(pikeman, archer, pistolero)
+    val army = listOf(pikeman, archer, pistolero)
+    for(soldier in army){
+        println("soldier= ${soldier::class.simpleName} health= ${soldier.health} damage= ${soldier.damage}")
+    }
 
-    println("pikeman heavy=${pikeman.isHeavy()} light=${pikeman.isLight()}")
-    println("archer heavy=${archer.isHeavy()} light=${archer.isLight()}")
-    println("pistolero heavy=${pistolero.isHeavy()} light=${pistolero.isLight()}")
-
-    pikeman.attack(archer)
-    archer.attack(pikeman)
-    println("pikeman health= ${pikeman.health} archer health= ${archer.health}")
-
-    pikeman.attack(pistolero)
-    pistolero.attack(pikeman)
-    println("pikeman health= ${pikeman.health} pistolero health= ${pistolero.health}")
-
-    archer.attack(pistolero)
-    pistolero.attack(archer)
-    println("archer health= ${archer.health} pistolero health= ${pistolero.health}")
+    for(i in army.indices){
+        val soldier = army[i]
+        println("soldier= ${soldier::class.simpleName}")
+    }
 }
