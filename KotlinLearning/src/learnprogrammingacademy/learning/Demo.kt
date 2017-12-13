@@ -1,21 +1,17 @@
 package learnprogrammingacademy.learning
 
-/*
-Write another class that inherits/extends from Enemy calls Pistolero
-Pistolero has weapon pistol and 6 bullets
-Add reload method from Pistolero but only can use it if there are no more bullets
-Override attack method to fire bullet only if there are bullets left
-If there are no more bullets reload then fire a bullet
-Add code to main to simulate attack between Pistolero and archer/pikeman
-Tip: Use loops instead of duplication calls to attach method
- */
+interface Healable {
+    fun heal(amount: Int)
+}
 
-open class Enemy(health: Int, var weapon: String){
+abstract class Enemy(health: Int, var weapon: String){
 
     var health: Int = 0
         set(value) {
-            field = if(health < 0){
+            field = if(value < 0){
                 0
+            }else if(value > 100){
+                100
             }else{
                 value
             }
@@ -32,14 +28,20 @@ open class Enemy(health: Int, var weapon: String){
         enemy.takeDamage(damage)
     }
 
-    fun takeDamage(damageToTake: Int){
+    private fun takeDamage(damageToTake: Int){
         health -= damageToTake
     }
+
+    abstract fun run()
 }
 
 class Pikeman(health: Int, var armor: Int) : Enemy(health, "pike"){
     init {
         println("Pikeman init called")
+    }
+
+    override fun run() {
+        println("Pikeman running...")
     }
 }
 
@@ -58,9 +60,13 @@ class Archer(health: Int, var arrowCount: Int) : Enemy(health, "bow"){
         arrowCount--
         println("Arrows left= $arrowCount")
     }
+
+    override fun run() {
+        println("Archer running...")
+    }
 }
 
-class Pistolero(health: Int) : Enemy(health, "pistol"){
+class Pistolero(health: Int) : Enemy(health, "pistol"), Healable{
 
     var bulletCount: Int = 6
         private set(value) {
@@ -89,6 +95,20 @@ class Pistolero(health: Int) : Enemy(health, "pistol"){
         println("Bullets left= $bulletCount")
     }
 
+    override fun run() {
+        println("Pistolero running...")
+    }
+
+    override fun heal(amount: Int) {
+        if(amount < 0){
+            println("Can't heal with negative amount")
+            return
+        }
+
+        println("healing with amount= $amount")
+        health += amount
+    }
+
     private fun reload(){
         println("Reloading pistol...")
         bulletCount = 6
@@ -96,14 +116,45 @@ class Pistolero(health: Int) : Enemy(health, "pistol"){
 }
 
 fun main(args: Array<String>) {
-    pistoleroVsPikeman()
-    pistoleroVsArcher()
+    val pikeman : Enemy = Pikeman(100, 100)
+    pikeman.damage = 5
+    pikeman.run()
+
+    val archer : Enemy = Archer(100, 5)
+    archer.damage = 5
+    archer.run()
+
+    val pistolero : Enemy = Pistolero(100)
+    pistolero.damage = 10
+    pistolero.run()
+
+    while (archer.health > 0){
+        pistolero.attack(archer)
+        archer.attack(pistolero)
+    }
+
+    println("archer died")
+    println("pistolero health= ${pistolero.health}")
+    if(pistolero is Healable){
+        pistolero.heal(10)
+        println("pistolero health= ${pistolero.health}")
+
+        pistolero.heal(-10)
+        println("pistolero health= ${pistolero.health}")
+
+        pistolero.heal(200)
+        println("pistolero health= ${pistolero.health}")
+    }
+
+    //pistoleroVsPikeman()
+    //pistoleroVsArcher()
 }
 
 private fun pistoleroVsPikeman(){
     println("******************************** pistoleroVsPikeman ********************************")
     val pikeman : Enemy = Pikeman(100, 100)
     pikeman.damage = 5
+    pikeman.run()
     val pistolero : Enemy = Pistolero(100)
     pistolero.damage = 10
 
