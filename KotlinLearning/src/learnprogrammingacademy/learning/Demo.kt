@@ -1,12 +1,13 @@
 package learnprogrammingacademy.learning
 
-enum class EnemyClassType{
+enum class SoldierClassType{
     LIGHT, HEAVY;
 
     fun isLight() = this == LIGHT
     fun isHeavy() = this == HEAVY
 }
 
+//<editor-fold desc="Interfaces">
 interface Healable {
     fun heal(amount: Int)
 }
@@ -14,8 +15,10 @@ interface Healable {
 interface Shooter {
     fun reload()
 }
+//</editor-fold>
 
-abstract class Enemy(health: Int, var weapon: String){
+//<editor-fold desc="Soldier class">
+abstract class Soldier(health: Int, var weapon: String){
 
     var health: Int = 0
         set(value) {
@@ -28,17 +31,17 @@ abstract class Enemy(health: Int, var weapon: String){
             }
         }
     var damage: Int = 0
-    var type = EnemyClassType.LIGHT
+    var type = SoldierClassType.LIGHT
 
     init {
         this.health = health
-        println("Enemy init called")
+        println("Soldier init called")
     }
 
     fun isLight() = type.isLight()
     fun isHeavy() = type.isHeavy()
 
-    open fun attack(enemy: Enemy){
+    open fun attack(soldier: Soldier){
         val percentage = (damage * 0.1).toInt()
         val damageToTake = if(isLight() && type.isHeavy()){ //light vs heavy
             damage - percentage
@@ -48,24 +51,24 @@ abstract class Enemy(health: Int, var weapon: String){
             damage
         }
 
-//        val damageToTake = if(type.isLight() && enemy.type.isHeavy()){ //light vs heavy
+//        val damageToTake = if(type.isLight() && soldier.type.isHeavy()){ //light vs heavy
 //            damage - percentage
-//        } else if(type.isHeavy() && enemy.type.isLight()){ //heavy vs light
+//        } else if(type.isHeavy() && soldier.type.isLight()){ //heavy vs light
 //            damage + percentage
 //        }else{
 //            damage
 //        }
 
-//        val damageToTake = if(type == EnemyClassType.LIGHT && enemy.type == EnemyClassType.HEAVY){ //light vs heavy
+//        val damageToTake = if(type == EnemyClassType.LIGHT && soldier.type == EnemyClassType.HEAVY){ //light vs heavy
 //            damage - percentage
-//        } else if(type == EnemyClassType.HEAVY&& enemy.type == EnemyClassType.LIGHT){ //heavy vs light
+//        } else if(type == EnemyClassType.HEAVY&& soldier.type == EnemyClassType.LIGHT){ //heavy vs light
 //            damage + percentage
 //        }else{
 //            damage
 //        }
 
-        println("Attacking ${enemy::class.simpleName} with $weapon")
-        enemy.takeDamage(damageToTake)
+        println("Attacking ${soldier::class.simpleName} with $weapon")
+        soldier.takeDamage(damageToTake)
     }
 
     private fun takeDamage(damageToTake: Int){
@@ -74,10 +77,11 @@ abstract class Enemy(health: Int, var weapon: String){
 
     abstract fun run()
 }
+//</editor-fold>
 
-class Pikeman(health: Int, var armor: Int) : Enemy(health, "pike"){
+class Pikeman(health: Int, var armor: Int) : Soldier(health, "pike"){
     init {
-        type = EnemyClassType.HEAVY
+        type = SoldierClassType.HEAVY
         println("Pikeman init called")
     }
 
@@ -86,7 +90,7 @@ class Pikeman(health: Int, var armor: Int) : Enemy(health, "pike"){
     }
 }
 
-class Archer(health: Int, arrowCount: Int) : Enemy(health, "bow"), Shooter{
+class Archer(health: Int, arrowCount: Int) : Soldier(health, "bow"), Shooter{
 
     var arrowCount: Int = 5
         private set(value) {
@@ -103,13 +107,13 @@ class Archer(health: Int, arrowCount: Int) : Enemy(health, "bow"), Shooter{
         println("Archer init called")
     }
 
-    override fun attack(enemy: Enemy) {
+    override fun attack(soldier: Soldier) {
         if (arrowCount <= 0) {
             println("No more arrows")
             reload()
         }
 
-        super.attack(enemy)
+        super.attack(soldier)
         arrowCount--
         println("Arrows left= $arrowCount")
     }
@@ -124,7 +128,7 @@ class Archer(health: Int, arrowCount: Int) : Enemy(health, "bow"), Shooter{
     }
 }
 
-class Pistolero(health: Int) : Enemy(health, "pistol"), Healable, Shooter{
+class Pistolero(health: Int) : Soldier(health, "pistol"), Healable, Shooter{
 
     var bulletCount: Int = 6
         private set(value) {
@@ -141,13 +145,13 @@ class Pistolero(health: Int) : Enemy(health, "pistol"), Healable, Shooter{
         println("Pistolero init called")
     }
 
-    override fun attack(enemy: Enemy) {
+    override fun attack(soldier: Soldier) {
         if (bulletCount <= 0) {
             println("No more bullets!")
             reload()
         }
 
-        super.attack(enemy)
+        super.attack(soldier)
         bulletCount--
         println("Bullets left= $bulletCount")
     }
@@ -173,16 +177,16 @@ class Pistolero(health: Int) : Enemy(health, "pistol"), Healable, Shooter{
 }
 
 fun main(args: Array<String>) {
-    val pikeman : Enemy = Pikeman(100, 100)
+    val pikeman : Soldier = Pikeman(100, 100)
     pikeman.damage = 15
     pikeman.run()
 
-    val archer : Enemy = Archer(100, 5)
+    val archer : Soldier = Archer(100, 5)
     archer.damage = 10
     archer.run()
 
-    val pistolero : Enemy = Pistolero(100)
-    pistolero.damage = 20
+    val pistolero : Soldier = Pistolero(100)
+    archer.damage = 20
     pistolero.run()
 
     println("pikeman type=${pikeman.type}")

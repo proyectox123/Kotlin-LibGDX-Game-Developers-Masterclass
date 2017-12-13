@@ -18,9 +18,19 @@
       <file leaf-file-name="Demo.kt" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/learnprogrammingacademy/learning/Demo.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="140">
-              <caret line="47" column="0" lean-forward="true" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="187">
+              <caret line="129" column="0" lean-forward="true" selection-start-line="129" selection-start-column="0" selection-end-line="129" selection-end-column="0" />
+              <folding>
+                <element signature="n#!!block;n#SoldierClassType#0" expanded="false" />
+                <element signature="n#!!doc;n#Healable#0" expanded="false" />
+                <element signature="n#!!block;n#Healable#0" expanded="false" />
+                <element signature="n#!!block;n#Shooter#0" expanded="false" />
+                <element signature="n#!!doc;n#Soldier#0" expanded="false" />
+                <element signature="n#!!block;n#Pikeman#0" expanded="false" />
+                <element signature="n#!!block;n#Archer#0" expanded="false" />
+                <element signature="n#!!block;n#Pistolero#0" expanded="false" />
+                <element signature="n#!!block;n#main#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -233,12 +243,12 @@
       <workItem from="1513033279714" duration="47000" />
       <workItem from="1513034498157" duration="7000" />
       <workItem from="1513100008040" duration="1220000" />
-      <workItem from="1513182723703" duration="20218000" />
+      <workItem from="1513182723703" duration="21104000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="34302000" />
+    <option name="totallyTimeSpent" value="35188000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1358" y="-8" width="1936" height="1056" extended-state="6" />
@@ -253,13 +263,14 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.36944744" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.36944744" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25586355" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25586355" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -270,7 +281,6 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -281,7 +291,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="1" />
+      <option name="time" value="2" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -290,7 +300,17 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="n#!!block;n#SoldierClassType#0" expanded="false" />
+            <element signature="n#!!doc;n#Healable#0" expanded="false" />
+            <element signature="n#!!block;n#Healable#0" expanded="false" />
+            <element signature="n#!!block;n#Shooter#0" expanded="false" />
+            <element signature="n#!!doc;n#Soldier#0" expanded="false" />
+            <element signature="n#!!block;n#Pikeman#0" expanded="false" />
+            <element signature="n#!!block;n#Archer#0" expanded="false" />
+            <element signature="n#!!block;n#Pistolero#0" expanded="false" />
+            <element signature="n#!!block;n#main#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -298,7 +318,17 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="n#!!block;n#SoldierClassType#0" expanded="false" />
+            <element signature="n#!!doc;n#Healable#0" expanded="false" />
+            <element signature="n#!!block;n#Healable#0" expanded="false" />
+            <element signature="n#!!block;n#Shooter#0" expanded="false" />
+            <element signature="n#!!doc;n#Soldier#0" expanded="false" />
+            <element signature="n#!!block;n#Pikeman#0" expanded="false" />
+            <element signature="n#!!block;n#Archer#0" expanded="false" />
+            <element signature="n#!!block;n#Pistolero#0" expanded="false" />
+            <element signature="n#!!block;n#main#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -306,7 +336,17 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="n#!!block;n#SoldierClassType#0" expanded="false" />
+            <element signature="n#!!doc;n#Healable#0" expanded="false" />
+            <element signature="n#!!block;n#Healable#0" expanded="false" />
+            <element signature="n#!!block;n#Shooter#0" expanded="false" />
+            <element signature="n#!!doc;n#Soldier#0" expanded="false" />
+            <element signature="n#!!block;n#Pikeman#0" expanded="false" />
+            <element signature="n#!!block;n#Archer#0" expanded="false" />
+            <element signature="n#!!block;n#Pistolero#0" expanded="false" />
+            <element signature="n#!!block;n#main#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -314,7 +354,17 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="n#!!block;n#SoldierClassType#0" expanded="false" />
+            <element signature="n#!!doc;n#Healable#0" expanded="false" />
+            <element signature="n#!!block;n#Healable#0" expanded="false" />
+            <element signature="n#!!block;n#Shooter#0" expanded="false" />
+            <element signature="n#!!doc;n#Soldier#0" expanded="false" />
+            <element signature="n#!!block;n#Pikeman#0" expanded="false" />
+            <element signature="n#!!block;n#Archer#0" expanded="false" />
+            <element signature="n#!!block;n#Pistolero#0" expanded="false" />
+            <element signature="n#!!block;n#main#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -360,9 +410,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/learnprogrammingacademy/learning/Demo.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="47" column="0" lean-forward="true" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="187">
+          <caret line="129" column="0" lean-forward="true" selection-start-line="129" selection-start-column="0" selection-end-line="129" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!block;n#SoldierClassType#0" expanded="false" />
+            <element signature="n#!!doc;n#Healable#0" expanded="false" />
+            <element signature="n#!!block;n#Healable#0" expanded="false" />
+            <element signature="n#!!block;n#Shooter#0" expanded="false" />
+            <element signature="n#!!doc;n#Soldier#0" expanded="false" />
+            <element signature="n#!!block;n#Pikeman#0" expanded="false" />
+            <element signature="n#!!block;n#Archer#0" expanded="false" />
+            <element signature="n#!!block;n#Pistolero#0" expanded="false" />
+            <element signature="n#!!block;n#main#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
