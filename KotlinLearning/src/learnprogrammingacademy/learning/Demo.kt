@@ -1,12 +1,28 @@
 package learnprogrammingacademy.learning
 
-open class Enemy(var health: Int, var weapon: String){
+open class Enemy(health: Int, var weapon: String){
+
+    var health: Int = 0
+        set(value) {
+            field = if(health < 0){
+                0
+            }else{
+                value
+            }
+        }
+    var damage: Int = 0
+
     init {
         println("Enemy init called")
     }
 
-    open fun attack(){
-        println("Attacking with $weapon")
+    open fun attack(enemy: Enemy){
+        println("Attacking ${enemy::class.simpleName} with $weapon")
+        enemy.takeDamage(damage)
+    }
+
+    fun takeDamage(damageToTake: Int){
+        health -= damageToTake
     }
 }
 
@@ -21,28 +37,31 @@ class Archer(health: Int, var arrowCount: Int) : Enemy(health, "bow"){
         println("Archer init called")
     }
 
-    override fun attack() {
+    override fun attack(enemy: Enemy) {
         if (arrowCount <= 0) {
             println("No more arrows")
             return
         }
 
-        super.attack()
+        super.attack(enemy)
         arrowCount--
         println("Arrows left= $arrowCount")
     }
 }
 
 fun main(args: Array<String>) {
-    val pikeman = Pikeman(100, 100)
-    pikeman.attack()
+    val pikeman : Enemy = Pikeman(100, 100)
+    pikeman.damage = 40
+    val archer : Enemy = Archer(100, 5)
+    archer.damage = 60
 
-    val archer = Archer(100, 5)
-    archer.attack()
-    archer.attack()
-    archer.attack()
-    archer.attack()
-    archer.attack()
-    archer.attack()
-    archer.attack()
+    pikeman.attack(archer)
+    println("pikeman health= ${pikeman.health} archer health= ${archer.health}")
+    archer.attack(pikeman)
+    println("pikeman health= ${pikeman.health} archer health= ${archer.health}")
+
+    pikeman.attack(archer)
+    println("pikeman health= ${pikeman.health} archer health= ${archer.health}")
+    archer.attack(pikeman)
+    println("pikeman health= ${pikeman.health} archer health= ${archer.health}")
 }
