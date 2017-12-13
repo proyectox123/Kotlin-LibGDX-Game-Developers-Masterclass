@@ -5,7 +5,7 @@ open class Enemy(var health: Int, var weapon: String){
         println("Enemy init called")
     }
 
-    fun attack(){
+    open fun attack(){
         println("Attacking with $weapon")
     }
 }
@@ -20,6 +20,17 @@ class Archer(health: Int, var arrowCount: Int) : Enemy(health, "bow"){
     init {
         println("Archer init called")
     }
+
+    override fun attack() {
+        if (arrowCount <= 0) {
+            println("No more arrows")
+            return
+        }
+
+        super.attack()
+        arrowCount--
+        println("Arrows left= $arrowCount")
+    }
 }
 
 fun main(args: Array<String>) {
@@ -27,5 +38,11 @@ fun main(args: Array<String>) {
     pikeman.attack()
 
     val archer = Archer(100, 5)
+    archer.attack()
+    archer.attack()
+    archer.attack()
+    archer.attack()
+    archer.attack()
+    archer.attack()
     archer.attack()
 }
