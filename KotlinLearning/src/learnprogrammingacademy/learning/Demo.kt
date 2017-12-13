@@ -2,30 +2,26 @@ package learnprogrammingacademy.learning
 
 class Player {
     private var health = 150
-    private var alive = true
+        set(value){
+            println("setter block")
+            var newHealth = value
+            if(value <= 0){
+                newHealth = 0
+            }
 
-    fun reduceHealth(amount: Int){
-        setHealth(health - amount)
-    }
-
-    private fun setHealth(value: Int){
-        var newHealth = value
-        if(value <= 0){
-            newHealth = 0
-            alive = false
+            field = newHealth
         }
 
-        health = newHealth
+    val alive
+        get() = health > 0
+
+    fun reduceHealth(amount: Int){
+        health -= amount
     }
-
-    fun getHealth() = health
-
-    fun isAlive() = alive
 
     fun respawn(){
         if(!alive){
             health = 150
-            alive = true
         }
     }
 
@@ -34,6 +30,7 @@ class Player {
 
 fun main(args: Array<String>) {
     val player = Player()
+    println("player alive= ${player.alive}")
 
     player.reduceHealth(100)
     player.printInfo()
