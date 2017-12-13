@@ -1,47 +1,46 @@
 package learnprogrammingacademy.learning
 
-class Dog constructor(private val color: String = "black") {
+class Player {
+    private var health = 150
+    private var alive = true
 
-    init {
-        println("Dog initialized with color value= $color")
+    fun reduceHealth(amount: Int){
+        setHealth(health - amount)
     }
 
-    fun printColor() = println("color= $color")
-}
+    private fun setHealth(value: Int){
+        var newHealth = value
+        if(value <= 0){
+            newHealth = 0
+            alive = false
+        }
 
-class Cat(private val name: String = "Tom", private val age: Int = 5){
-//    private var age = 3
+        health = newHealth
+    }
 
-//    constructor(name: String = "Tom", age: Int = 5) : this(name){
-//        this.age = age
-//    }
+    fun getHealth() = health
 
-    fun printInfo() = println("name= $name age= $age")
+    fun isAlive() = alive
+
+    fun respawn(){
+        if(!alive){
+            health = 150
+            alive = true
+        }
+    }
+
+    fun printInfo() = println("health= $health alive= $alive")
 }
 
 fun main(args: Array<String>) {
-    callDog()
-    callCat()
-}
+    val player = Player()
 
-private fun callDog(){
-    val dog = Dog()
-    dog.printColor()
+    player.reduceHealth(100)
+    player.printInfo()
 
-    val dog2 = Dog("gray")
-    dog2.printColor()
+    player.reduceHealth(100)
+    player.printInfo()
 
-    println(dog == dog2)
-    println(dog === dog2)
-}
-
-private fun callCat(){
-    val cat = Cat()
-    cat.printInfo()
-
-    val cat2 = Cat(name = "Jerry")
-    cat2.printInfo()
-
-    val cat3 = Cat(name = "Jimmy", age = 10)
-    cat3.printInfo()
+    player.respawn()
+    player.printInfo()
 }
