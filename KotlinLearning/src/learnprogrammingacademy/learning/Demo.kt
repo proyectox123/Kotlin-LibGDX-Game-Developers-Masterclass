@@ -1,21 +1,27 @@
 package learnprogrammingacademy.learning
 
-/*
-Write class Armor similar to Health
-Create property armor in Soldier class
-When printing soldier, make sure it prints armor (modify toString method)
-Add armor to Pikeman and archer inside main method
-Create swordsman soldier and print to console
- */
+interface BasicComponent
 
-class Armor(var amount: Int)
+class Armor(var amount: Int) : BasicComponent
 
-class Health(var amount: Int)
+class Health(var amount: Int) : BasicComponent
 
-class Weapon(var name: String)
+class Weapon(var name: String) : BasicComponent
 
-class Soldier(var name: String, var health: Health, var weapon: Weapon, var armor: Armor){
-    override fun toString() = "name='$name', health=${health.amount}, weapon=${weapon.name}, armor=${armor.amount}"
+class Unit(var name: String){
+
+    private val componentsByName = hashMapOf<String, BasicComponent>()
+
+    fun addComponent(name: String, component: BasicComponent) = componentsByName.put(name, component)
+
+    fun removeComponent(name: String) = componentsByName.remove(name)
+
+    fun getComponent(name: String) : BasicComponent? = componentsByName[name]
+
+    override fun toString(): String {
+        val componentsString = componentsByName.keys.joinToString(",")
+        return "name= $name components= $componentsString"
+    }
 }
 
 fun main(args: Array<String>) {
@@ -23,7 +29,10 @@ fun main(args: Array<String>) {
     val pikemanHealth= Health(100)
     val pike = Weapon("pike")
     val pikemanArmor = Armor(100)
-    val pikeman = Soldier("pikeman", pikemanHealth, pike, pikemanArmor)
+    val pikeman = Unit("pikeman")
+    pikeman.addComponent("health", pikemanHealth)
+    pikeman.addComponent("weapon", pike)
+    pikeman.addComponent("armor", pikemanArmor)
 
     println("pikeman= $pikeman")
 
@@ -31,7 +40,10 @@ fun main(args: Array<String>) {
     val archerHealth= Health(80)
     val bow = Weapon("bow")
     val archerArmor = Armor(80)
-    val archer = Soldier("archer", archerHealth, bow, archerArmor)
+    val archer = Unit("archer")
+    archer.addComponent("health", archerHealth)
+    archer.addComponent("weapon", bow)
+    archer.addComponent("armor", archerArmor)
 
     println("archer= $archer")
 
@@ -39,7 +51,23 @@ fun main(args: Array<String>) {
     val swordsmanHealth= Health(60)
     val sword = Weapon("bow")
     val swordsmanArmor = Armor(60)
-    val swordsman = Soldier("swordsman", swordsmanHealth, sword, swordsmanArmor)
+    val swordsman = Unit("swordsman")
+    swordsman.addComponent("health", swordsmanHealth)
+    swordsman.addComponent("weapon", sword)
+    swordsman.addComponent("armor", swordsmanArmor)
 
     println("swordsman= $swordsman")
+
+    //Medic
+    val medicHealth = Health(50)
+    val medic = Unit("medic")
+    medic.addComponent("health", medicHealth)
+
+    println("medic= $medic")
+
+    val medicWeapon = medic.getComponent("weapon")
+    println("medic hasWeapon ${medicWeapon != null}")
+
+    val pikemanWeapon = pikeman.getComponent("weapon") as Weapon
+    println("pikeman hasWeapon ${pikemanWeapon.name}")
 }
