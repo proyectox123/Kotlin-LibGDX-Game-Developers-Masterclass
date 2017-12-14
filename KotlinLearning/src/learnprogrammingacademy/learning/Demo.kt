@@ -1,24 +1,34 @@
 package learnprogrammingacademy.learning
 
-import java.util.*
-
 fun main(args: Array<String>) {
-    val deck = Stack<String>()
+//    val weaponsByDamage = hashMapOf<String, Int>()
+//    weaponsByDamage.put("pike", 10)
+//    weaponsByDamage.put("arrow", 15)
+//    weaponsByDamage.put("sword", 20)
+//    weaponsByDamage.put("pistol", 30)
 
-    deck.push("Ace of diamonds") //Bottom
-    deck.push("Ace of hearts")
-    deck.push("Ace of clubs")
-    deck.push("Ace of spades")
+    val weaponsByDamage = hashMapOf(
+            "pike" to 10,
+            "arrow" to 15,
+            "sword" to 20,
+            "pistol" to 30
+    )
 
-    println("size= ${deck.size}")
-    for(card in deck){
-        println("card= $card")
+    for((key, value) in weaponsByDamage){
+        println("key= $key value= $value")
     }
 
-    while(deck.size > 0){
-        val cardName = deck.pop()
-        println("dealing card= $cardName")
+    for(key in weaponsByDamage.keys){
+        println("key= $key")
     }
 
-    println("size= ${deck.size}")
+    for(value in weaponsByDamage.values){
+        println("value= $value")
+    }
+
+    //getting / setting values
+    println("sword has damage= ${weaponsByDamage["sword"]}")
+    //weaponsByDamage.put("sword", 35)
+    weaponsByDamage["sword"] = 35
+    println("sword has new damage= ${weaponsByDamage["sword"]}")
 }
