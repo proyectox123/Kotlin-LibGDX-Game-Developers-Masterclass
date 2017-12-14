@@ -1,42 +1,25 @@
 package learnprogrammingacademy.learning
 
+class Health(var amount: Int)
 
-/*
-Using knowledge from previous lesson, override minus and times operators in Complex Number class
-Print to console results of minus and times operations
- */
-class ComplexNumber(val real: Float, val imaginary: Float){
+class Weapon(var name: String)
 
-    operator fun minus(other: ComplexNumber) = ComplexNumber(real - other.real, imaginary - other.imaginary)
-
-    operator fun plus(other: ComplexNumber) = ComplexNumber(real + other.real, imaginary + other.imaginary)
-
-    //(a + bi) * (c + di) = (ac - bd) + (bc + ad)i
-    operator fun times(other: ComplexNumber) = ComplexNumber(timesGetRealPart(other), timesGetImaginaryPart(other))
-
-    override fun toString(): String {
-        return "$real ${getSign()} ${Math.abs(imaginary)}i"
-    }
-
-    private fun timesGetRealPart(other: ComplexNumber) = (real * other.real) - (imaginary * other.imaginary)
-
-    private fun timesGetImaginaryPart(other: ComplexNumber) = (imaginary * other.real) + (real * other.imaginary)
-
-    private fun getSign() = if(imaginary >= 0){
-        "+"
-    }else{
-        "-"
-    }
+class Soldier(var name: String, var health: Health, var weapon: Weapon){
+    override fun toString() = "name='$name', health=${health.amount}, weapon=${weapon.name}"
 }
 
 fun main(args: Array<String>) {
-    val first = ComplexNumber(2f, 2f)
-    val second = ComplexNumber(3f, -5f)
+    //Pikeman
+    val pikemanHealth= Health(100)
+    val pike = Weapon("pike")
+    val pikeman = Soldier("pikeman", pikemanHealth, pike)
 
-    println("first= $first")
-    println("second= $second")
+    println("pikeman= $pikeman")
 
-    println("sum= ${first + second}")
-    println("minus= ${first - second}")
-    println("mul= ${first * second}")
+    //Archer
+    val archerHealth= Health(80)
+    val bow = Weapon("bow")
+    val archer = Soldier("archer", archerHealth, bow)
+
+    println("archer= $archer")
 }
