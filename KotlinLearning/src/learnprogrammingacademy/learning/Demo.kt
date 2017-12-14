@@ -34,4 +34,12 @@ fun main(args: Array<String>) {
     val archer = Soldier("archer", archerHealth, bow, archerArmor)
 
     println("archer= $archer")
+
+    //Swordsman
+    val swordsmanHealth= Health(60)
+    val sword = Weapon("bow")
+    val swordsmanArmor = Armor(60)
+    val swordsman = Soldier("swordsman", swordsmanHealth, sword, swordsmanArmor)
+
+    println("swordsman= $swordsman")
 }
