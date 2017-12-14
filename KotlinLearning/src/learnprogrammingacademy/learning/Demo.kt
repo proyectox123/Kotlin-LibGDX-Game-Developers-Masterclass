@@ -1,20 +1,31 @@
 package learnprogrammingacademy.learning
 
+
+/*
+Using knowledge from previous lesson, override minus and times operators in Complex Number class
+Print to console results of minus and times operations
+ */
 class ComplexNumber(val real: Float, val imaginary: Float){
 
-    operator fun plus(other: ComplexNumber) =
-            ComplexNumber(real + other.real, imaginary + other.imaginary)
+    operator fun minus(other: ComplexNumber) = ComplexNumber(real - other.real, imaginary - other.imaginary)
+
+    operator fun plus(other: ComplexNumber) = ComplexNumber(real + other.real, imaginary + other.imaginary)
+
+    //(a + bi) * (c + di) = (ac - bd) + (bc + ad)i
+    operator fun times(other: ComplexNumber) = ComplexNumber(timesGetRealPart(other), timesGetImaginaryPart(other))
 
     override fun toString(): String {
-        val sign = if(imaginary == 0f){
-            ""
-        }else if(imaginary >= 0){
-            "+"
-        }else{
-            "-"
-        }
+        return "$real ${getSign()} ${Math.abs(imaginary)}i"
+    }
 
-        return "$real $sign ${Math.abs(imaginary)}i"
+    private fun timesGetRealPart(other: ComplexNumber) = (real * other.real) - (imaginary * other.imaginary)
+
+    private fun timesGetImaginaryPart(other: ComplexNumber) = (imaginary * other.real) + (real * other.imaginary)
+
+    private fun getSign() = if(imaginary >= 0){
+        "+"
+    }else{
+        "-"
     }
 }
 
@@ -25,6 +36,7 @@ fun main(args: Array<String>) {
     println("first= $first")
     println("second= $second")
 
-    val sum = first + second
-    println("sum= $sum")
+    println("sum= ${first + second}")
+    println("minus= ${first - second}")
+    println("mul= ${first * second}")
 }
